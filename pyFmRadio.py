@@ -4,7 +4,7 @@
 #!/usr/bin/python
 
 import threading
-import Queue
+import queue
 import struct
 import pyaudio
 import numpy as np
@@ -260,15 +260,15 @@ fmDemod = FMDemod();
 fileRead = FileReader();
 audioPlay = AudioPlay();
 
-dataQueue = Queue.Queue([1]);
-audioQueue = Queue.Queue([1]);
+dataQueue = queue.Queue([1]);
+audioQueue = queue.Queue([1]);
 
 sdr = RtlSdr();
 
 # configure device
 sdr.sample_rate = 250e3;  # Hz
 numSampsRead = 1024*600;
-freq = raw_input('Choose a station frequency: ');
+freq = input('Choose a station frequency: ');
 
 try:
   freq = float(freq);
